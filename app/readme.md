@@ -4,8 +4,8 @@ Steps to  run the code
 2) Create a virtual env and activate 
 3) Execute --> pip/pip3 install -r requirements.txt
 4) In the shell give the command -->  uvicorn app.main:app --reload
-5) Ideally , html page to upload CSV and give inputs to Name and Age column will be at  -->http://localhost:8000/assessment
-6) Upload a CSV file with Name and Age keys( Should be as given)
-7) Give inputs to where Name and Age columns are placed in CSV(Columns ids)
+5) Ideally , an html page to upload CSV and to give inputs to Name and Age column will be at  --> http://localhost:8000/assessment
+6) Upload a CSV file with keys. 
+7) Give inputs as ids where Name and Age columns are placed in CSV
 8) Upon your input you will be navigated to  --> http://localhost:8000/assessment/data_upload/
    
