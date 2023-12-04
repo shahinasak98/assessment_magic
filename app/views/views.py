@@ -60,6 +60,10 @@ async def data_read(
         return {
             "response": CONFIG.SUCCESS_RESPONSE
         }
+    except FileNotFoundError as error:
+        return {
+            "response": f"Missing file .{str(error)}"
+        }
     except IndexError as error:
         return {
             "response": f"An Index error has occured .{str(error)}"
