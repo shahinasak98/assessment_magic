@@ -1,8 +1,8 @@
 import csv
+import config as CONFIG
 from io import TextIOWrapper, BytesIO
 from sqlalchemy import select
 from app.models.users import users, database
-import config as CONFIG
 
 
 async def data_read(
