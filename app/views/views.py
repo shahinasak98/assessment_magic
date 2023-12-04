@@ -24,7 +24,6 @@ async def data_read(
         )
         sheet = list(csv.DictReader(text))
         keys = list(sheet[0].keys())
-        print("keys", keys)
         if "Name" not in keys or "Age" not in keys:
             return {
                 "response": CONFIG.NAME_AGE_RESPONSE
@@ -44,7 +43,7 @@ async def data_read(
                         f".Indexes found at {name+1} and {age+1} in the CSV")
                 )
             }
-        repeat_check = 0
+        repeat_check = "0"
         for row in sheet:
             query = select(users).where(
                 users.c.name == row[keys[int(column_1)-1]] and (
@@ -59,11 +58,12 @@ async def data_read(
                 )
                 await database.execute(query)
             else:
-                repeat_check += 1
+                repeat_check = "1"
         response = {
-            "response": CONFIG.SUCCESS_RESPONSE}
-        if repeat_check > 1:
-            response["response"] += CONFIG.REDUNDANT_RESPONSE
+            "response": (
+                CONFIG.SUCCESS_RESPONSE +
+                CONFIG.REDUNDANT_RESPONSE[repeat_check]
+            )}
         return response
     except FileNotFoundError as error:
         return {
