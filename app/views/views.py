@@ -44,6 +44,7 @@ async def data_read(
                         f".Indexes found at {name+1} and {age+1} in the CSV")
                 )
             }
+        repeat_check = 0
         for row in sheet:
             query = select(users).where(
                 users.c.name == row[keys[int(column_1)-1]] and (
@@ -57,9 +58,13 @@ async def data_read(
                     age=row[keys[int(column_2)-1]]
                 )
                 await database.execute(query)
-        return {
-            "response": CONFIG.SUCCESS_RESPONSE
-        }
+            else:
+                repeat_check += 1
+        response = {
+            "response": CONFIG.SUCCESS_RESPONSE}
+        if repeat_check > 1:
+            response["response"] += CONFIG.REDUNDANT_RESPONSE
+        return response
     except FileNotFoundError as error:
         return {
             "response": f"Missing file .{str(error)}"
