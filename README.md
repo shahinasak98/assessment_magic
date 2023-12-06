@@ -1,6 +1,6 @@
 # assessment_magic
 Steps to run the code
-
+    To be noted : "Name" and "Age" column should be as given. 
     Clone the repository and switch to branch --> feature/csv-processing
     Create a virtual env and activate
     Execute --> pip/pip3 install -r requirements.txt
